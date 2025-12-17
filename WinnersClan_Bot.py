@@ -6,7 +6,13 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ================= НАСТРОЙКИ =================
-TOKEN = "8594460224:AAGBS_ZVRVoD5KOGGjBaNRRM-MZu8IW4agY"
+import os
+
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    raise RuntimeError("BOT_TOKEN не найден в переменных окружения")
+
 
 ADMINS = [
     6016434146,
@@ -329,4 +335,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
